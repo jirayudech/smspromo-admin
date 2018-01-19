@@ -34,7 +34,7 @@
       <v-btn icon @click.stop="fixed = !fixed">
         <v-icon>remove</v-icon>
       </v-btn>
-      <v-toolbar-title v-text="title"></v-toolbar-title>
+      <v-toolbar-title v-text="appName"></v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn icon @click.stop="rightDrawer = !rightDrawer">
         <v-icon>menu</v-icon>
@@ -42,7 +42,7 @@
     </v-toolbar>
     <v-content>
       <v-container fluid>
-        <v-slide-y-transition mode="out-in">
+        <!-- <v-slide-y-transition mode="out-in">
           <v-layout column align-center>
             <img src="/static/v.png" alt="Vuetify.js" class="mb-5" />
             <blockquote>
@@ -54,7 +54,9 @@
               </footer>
             </blockquote>
           </v-layout>
-        </v-slide-y-transition>
+        </v-slide-y-transition> -->
+
+        <router-view></router-view>
       </v-container>
     </v-content>
     <v-navigation-drawer
@@ -73,7 +75,7 @@
       </v-list>
     </v-navigation-drawer>
     <v-footer :fixed="fixed" app>
-      <span>&copy; 2017</span>
+      <span>&copy; RGT 2017</span>
     </v-footer>
   </v-app>
 </template>
@@ -87,12 +89,22 @@
         fixed: false,
         items: [{
           icon: 'bubble_chart',
-          title: 'Inspire'
+          title: 'Campaigns'
+        },{
+          icon: 'bubble_chart',
+          title: 'Clients'
+        },{
+          icon: 'bubble_chart',
+          title: 'Operators'
         }],
         miniVariant: false,
         right: true,
         rightDrawer: false,
-        title: 'Vuetify.js'
+        title: ''
+      }
+    }, computed: {
+      appName() {
+        return this.$store.getters.appTitle
       }
     }
   }
