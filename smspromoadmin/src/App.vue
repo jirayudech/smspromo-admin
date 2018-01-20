@@ -50,25 +50,12 @@
       <v-icon left>{{ item.icon }}</v-icon>
       {{ item.title }}
     </v-btn>
-    
+
     </v-toolbar>
     <v-content>
       <v-container fluid>
-        <!-- <v-slide-y-transition mode="out-in">
-          <v-layout column align-center>
-            <img src="/static/v.png" alt="Vuetify.js" class="mb-5" />
-            <blockquote>
-              &#8220;First, solve the problem. Then, write the code.&#8221;
-              <footer>
-                <small>
-                  <em>&mdash;John Johnson</em>
-                </small>
-              </footer>
-            </blockquote>
-          </v-layout>
-        </v-slide-y-transition> -->
-
-        <router-view></router-view>
+        <!-- Redered Content Show Here. -->
+        <router-view></router-view> 
       </v-container>
     </v-content>
     <v-navigation-drawer
@@ -110,6 +97,9 @@
         },{
           icon: 'bubble_chart',
           title: 'Operators'
+        },{
+          icon: 'bubble_chart',
+          title: 'Setting'
         }],
         miniVariant: false,
         right: true,

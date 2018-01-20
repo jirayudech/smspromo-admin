@@ -10,7 +10,9 @@ import { firebaseConfig } from './config'
 
 import App from './App'
 import router from './router'
+import VueFire from 'vuefire'
 
+Vue.use(VueFire)
 Vue.use(Vuetify)
 firebase.initializeApp(firebaseConfig)
 
@@ -30,3 +32,6 @@ const unsubscribe = firebase
     })
    unsubscribe()
 })
+
+export const db = firebase.database();
+export const campainsRef = db.ref('campaignDetails');
