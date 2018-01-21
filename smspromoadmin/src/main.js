@@ -34,4 +34,4 @@ const unsubscribe = firebase
 })
 
 export const db = firebase.database();
-export const campainsRef = db.ref('campaignDetails');
+export const campainsRef = db.ref('campaigns');

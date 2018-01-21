@@ -1,19 +1,48 @@
 <template>
-  <div class="body">
-    <h1>{{ msg }}</h1>
-    <h2>Add Campaign</h2>
-    <label>Campaign Header:</label>
-    <input type="text" v-model="campaignHeader">
-    <br>
-    <button id="addButton" @click="submitCampaign()">Add Campain</button>
-    <br><br>
+  <v-card>
+    <v-card-text class="text-lg-right">
+      <!-- <label class="text-lg-right">Campaign Header:</label>
+      <input type="text" v-model="campaignHeader"> -->
+      <v-btn color="primary"  id="addButton" @click="submitCampaign()">
+        <v-icon dark left>add_circle</v-icon> Add Campaign
+      </v-btn>
+    </v-card-text>
+
+  <v-data-table
+    v-bind:headers="headers"
+    v-bind:items="campains"
+    v-bind:search="search"
+    v-model="selected"
+    item-key="name"
+    select-all
+    class="elevation-1"
+  >
+    <template slot="headerCell" slot-scope="props">
+      <v-tooltip bottom>
+        <span slot="activator">
+          {{ props.header.text }}
+        </span>
+        <span>
+          {{ props.header.text }}
+        </span>
+      </v-tooltip>
+    </template>
+    <template slot="items" slot-scope="props">
+      <td>
+        <v-checkbox
+          primary
+          hide-details
+          v-model="props.selected"
+        ></v-checkbox>
+      </td>
+      <td class="text-xs-left">{{ props.item.campaign_client }}</td>
+      <td class="text-xs-left">{{ props.item.campaign_header }}</td>
+    </template>
+  </v-data-table>
 
 
-    <h2>Campaigns</h2>
-    <ul>
-      <li v-for="campaign of campains" v-bind:key="campaign['.key']">{{campaign.th.campaignHeader}}</li>
-    </ul>
-  </div>
+
+  </v-card>
 </template>
 
 <script>
@@ -24,7 +53,11 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Campaign Management System'
+      msg: 'Welcome to Campaign Management System',
+      headers: [
+        { text: 'Clients',sortable: true,align: 'center' },
+        { text: 'Campaign Headers',sortable: true,align: 'center' },
+      ]
     }
   },
   firebase: {
@@ -32,7 +65,7 @@ export default {
   },
   methods: {
     submitCampaign(){
-      campainsRef.push({th:{campaignHeader: this.campaignHeader}})  
+      campainsRef.push({campaign_header: this.campaignHeader})  
     }
   }
 }
