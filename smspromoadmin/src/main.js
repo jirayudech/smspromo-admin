@@ -18,6 +18,26 @@ firebase.initializeApp(firebaseConfig)
 
 Vue.config.productionTip = false
 
+function VotingItem(item) {
+  var promise = new Promise(function(resolve, reject) {
+    item.short_description = item.description.slice(0, 140).concat('...');
+
+    if (item.image_loc === undefined) {
+      resolve(item);
+    }
+    firebase.storage().ref("items").child(item.image_loc).getDownloadURL()
+      .then(function(url) {
+        item.image_url = url;
+        resolve(item); 
+      })
+      .catch(function(error) {
+        item.image_url = "https://placeholdit.imgix.net/~text?txtsize=16&txt=C&w=50&h=50";
+        resolve(item);
+      });   
+  });  
+  return promise;
+}
+
 /* eslint-disable no-new */
 const unsubscribe = firebase
   .auth()

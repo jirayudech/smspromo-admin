@@ -89,16 +89,16 @@
         drawer: true,
         fixed: false,
         items: [{
-          icon: 'bubble_chart',
+          icon: 'home',
           title: 'Campaigns'
         },{
-          icon: 'bubble_chart',
+          icon: 'contacts',
           title: 'Clients'
         },{
-          icon: 'bubble_chart',
+          icon: 'settings_phone',
           title: 'Operators'
         },{
-          icon: 'bubble_chart',
+          icon: 'settings',
           title: 'Setting'
         }],
         miniVariant: false,

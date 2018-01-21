@@ -36,7 +36,14 @@
         ></v-checkbox>
       </td>
       <td class="text-xs-left">{{ props.item.campaign_client }}</td>
+      <td class="text-xs-left">{{ props.item.campaign_client_pic_url }}</td>
       <td class="text-xs-left">{{ props.item.campaign_header }}</td>
+      <td class="text-xs-center">
+        <v-btn flat small color="warning">Edit</v-btn>
+      </td>
+      <td class="text-xs-center">
+        <v-btn flat small color="error">Remove</v-btn>
+      </td>
     </template>
   </v-data-table>
 
@@ -56,7 +63,10 @@ export default {
       msg: 'Welcome to Campaign Management System',
       headers: [
         { text: 'Clients',sortable: true,align: 'center' },
+        { text: 'Campaign Picture',sortable: false,align: 'center' },
         { text: 'Campaign Headers',sortable: true,align: 'center' },
+        { text: 'Edit',sortable: false,align: 'center' },
+        { text: 'Remove',sortable: false,align: 'center' },
       ]
     }
   },
