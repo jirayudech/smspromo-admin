@@ -4,13 +4,13 @@
       <!-- <label class="text-lg-right">Campaign Header:</label>
       <input type="text" v-model="campaignHeader"> -->
       <v-btn color="primary"  id="addButton" @click="submitCampaign()">
-        <v-icon dark left>add_circle</v-icon> Add Agency
+        <v-icon dark left>add_circle</v-icon> Add User
       </v-btn>
     </v-card-text>
 
   <v-data-table
     v-bind:headers="headers"
-    v-bind:items="agencies"
+    v-bind:items="users"
     v-bind:search="search"
     v-model="selected"
     item-key="name"
@@ -35,8 +35,9 @@
           v-model="props.selected"
         ></v-checkbox>
       </td>
-      <td class="text-xs-left">{{ props.item.name }}</td>
-      <td class="text-xs-left">{{ props.item.email }}</td>
+      <td class="text-xs-left">{{ props.item['.key'] }}</td>
+      <td class="text-xs-left">{{ props.item.user_type }}</td>
+      <td class="text-xs-left">{{ props.item.identifier }}</td>
       <td class="text-xs-left">{{ props.item.mobile }}</td>
       <td class="text-xs-center">
         <v-btn flat small color="warning">Edit</v-btn>
@@ -54,7 +55,7 @@
 
 <script>
 
-import {agenciesRef} from '../main';
+import {usersRef} from '../main';
 
 export default {
   name: 'HelloWorld',
@@ -62,8 +63,9 @@ export default {
     return {
       msg: 'Welcome to Campaign Management System',
       headers: [
-        { text: 'Agencies',sortable: true,align: 'center' },
-        { text: 'email',sortable: false,align: 'center' },
+        { text: 'UID',sortable: true,align: 'center' },
+        { text: 'User Type',sortable: true,align: 'center' },
+        { text: 'Identifier',sortable: false,align: 'center' },
         { text: 'mobile',sortable: true,align: 'center' },
         { text: 'Edit',sortable: false,align: 'center' },
         { text: 'Remove',sortable: false,align: 'center' },
@@ -71,7 +73,7 @@ export default {
     }
   },
   firebase: {
-    agencies:agenciesRef
+    users:usersRef
   },
   methods: {
     submitCampaign(){

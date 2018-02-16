@@ -95,8 +95,8 @@
           link: '/'
         },{
           icon: 'contacts',
-          title: 'Agencies',
-          link: '/agengies'
+          title: 'Users',
+          link: '/users'
         },{
           icon: 'contacts',
           title: 'Clients',

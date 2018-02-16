@@ -35,9 +35,9 @@ const routerOptions = [
     meta: { requiresAuth: true, title: 'Clients' }
   },
   {
-    path: '/agengies',
-    component: 'Agencies',
-    meta: { requiresAuth: true, title: 'Agencies' }
+    path: '/users',
+    component: 'Users',
+    meta: { requiresAuth: true, title: 'Users' }
   }
 ]
 
