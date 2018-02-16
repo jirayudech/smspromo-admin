@@ -34,5 +34,7 @@ export const actions = {
     firebase.auth().signOut()
     commit('setUser', null)
     router.push('/signin')
+  },setPage ({commit}, payload) {
+    commit('setPage', payload)
   }
 }

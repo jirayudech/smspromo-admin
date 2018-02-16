@@ -12,6 +12,7 @@
           value="true"
           v-for="(item, i) in items"
           :key="i"
+          :to="item.link"
           exact
         >
           <v-list-tile-action>
@@ -34,7 +35,7 @@
       <v-btn icon @click.stop="fixed = !fixed">
         <v-icon>remove</v-icon>
       </v-btn>
-      <v-toolbar-title v-text="appName"></v-toolbar-title>
+      <v-toolbar-title v-text="appName+title"></v-toolbar-title>
       <v-spacer></v-spacer>
 
 
@@ -90,16 +91,24 @@
         fixed: false,
         items: [{
           icon: 'home',
-          title: 'Campaigns'
+          title: 'Campaigns',
+          link: '/'
         },{
           icon: 'contacts',
-          title: 'Clients'
+          title: 'Agencies',
+          link: '/agengies'
+        },{
+          icon: 'contacts',
+          title: 'Clients',
+          link: '/clients'
         },{
           icon: 'settings_phone',
-          title: 'Operators'
+          title: 'Operators',
+          link: '/operators'
         },{
           icon: 'settings',
-          title: 'Setting'
+          title: 'Settings',
+          link: '/settings'
         }],
         miniVariant: false,
         right: true,
@@ -135,6 +144,9 @@
       userSignOut() {
         this.$store.dispatch("userSignOut");
       }
+    },
+    beforeUpdate () {
+      this.title = document.title
     }
   }
 </script>

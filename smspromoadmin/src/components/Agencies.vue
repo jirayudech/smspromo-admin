@@ -4,7 +4,7 @@
       <!-- <label class="text-lg-right">Campaign Header:</label>
       <input type="text" v-model="campaignHeader"> -->
       <v-btn color="primary"  id="addButton" @click="submitCampaign()">
-        <v-icon dark left>add_circle</v-icon> Add Campaign
+        <v-icon dark left>add_circle</v-icon> Add Agency
       </v-btn>
     </v-card-text>
 
@@ -67,9 +67,9 @@ export default {
     return {
       msg: 'Welcome to Campaign Management System',
       headers: [
-        { text: 'Clients',sortable: true,align: 'center' },
-        { text: 'Campaign Picture',sortable: false,align: 'center' },
-        { text: 'Campaign Headers',sortable: true,align: 'center' },
+        { text: 'Agencies',sortable: true,align: 'center' },
+        { text: 'Picture',sortable: false,align: 'center' },
+        { text: 'Agencies Notes',sortable: true,align: 'center' },
         { text: 'Edit',sortable: false,align: 'center' },
         { text: 'Remove',sortable: false,align: 'center' },
       ]
@@ -82,8 +82,8 @@ export default {
     submitCampaign(){
       campainsRef.push({campaign_header: this.campaignHeader})  
     },
-    setPage() {
-        this.$store.dispatch("setPage","Clients");
+    setPage: function() {
+        this.$store.dispatch("setPage","Agencies");
     }
   }
 }

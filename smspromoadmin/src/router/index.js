@@ -27,7 +27,17 @@ const routerOptions = [
   {
     path: '/',
     component: 'Campaigns',
-    meta: { requiresAuth: true }
+    meta: { requiresAuth: true, title: 'Campaigns' }
+  },
+  {
+    path: '/clients',
+    component: 'Clients',
+    meta: { requiresAuth: true, title: 'Clients' }
+  },
+  {
+    path: '/agengies',
+    component: 'Agencies',
+    meta: { requiresAuth: true, title: 'Agencies' }
   }
 ]
 
@@ -50,6 +60,7 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
+  document.title = to.meta.title
   const requiresAuth = to
     .matched
     .some(record => record.meta.requiresAuth)

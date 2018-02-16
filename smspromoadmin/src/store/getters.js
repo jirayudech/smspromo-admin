@@ -10,5 +10,8 @@ export const getters = {
     },
     getLoading (state) {
       return state.loading
+    },
+    getPage (state) {
+      return state.page
     }
   }
