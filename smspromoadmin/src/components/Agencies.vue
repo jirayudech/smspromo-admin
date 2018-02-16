@@ -10,7 +10,7 @@
 
   <v-data-table
     v-bind:headers="headers"
-    v-bind:items="campains"
+    v-bind:items="agencies"
     v-bind:search="search"
     v-model="selected"
     item-key="name"
@@ -35,14 +35,9 @@
           v-model="props.selected"
         ></v-checkbox>
       </td>
-      <td class="text-xs-left">{{ props.item.campaign_client }}</td>
-      <td class="text-xs-left">
-
-              <!-- <img src="{{ props.item.campaign_client_pic_url }}" alt="avatar"> -->
-              <img :src="props.item.campaign_pic_url" height="50">
-
-      </td>
-      <td class="text-xs-left">{{ props.item.campaign_header }}</td>
+      <td class="text-xs-left">{{ props.item.name }}</td>
+      <td class="text-xs-left">{{ props.item.email }}</td>
+      <td class="text-xs-left">{{ props.item.mobile }}</td>
       <td class="text-xs-center">
         <v-btn flat small color="warning">Edit</v-btn>
       </td>
@@ -59,7 +54,7 @@
 
 <script>
 
-import {campainsRef} from '../main';
+import {agenciesRef} from '../main';
 
 export default {
   name: 'HelloWorld',
@@ -68,19 +63,19 @@ export default {
       msg: 'Welcome to Campaign Management System',
       headers: [
         { text: 'Agencies',sortable: true,align: 'center' },
-        { text: 'Picture',sortable: false,align: 'center' },
-        { text: 'Agencies Notes',sortable: true,align: 'center' },
+        { text: 'email',sortable: false,align: 'center' },
+        { text: 'mobile',sortable: true,align: 'center' },
         { text: 'Edit',sortable: false,align: 'center' },
         { text: 'Remove',sortable: false,align: 'center' },
       ]
     }
   },
   firebase: {
-    campains:campainsRef
+    agencies:agenciesRef
   },
   methods: {
     submitCampaign(){
-      campainsRef.push({campaign_header: this.campaignHeader})  
+      // campainsRef.push({campaign_header: this.campaignHeader})  
     },
     setPage: function() {
         this.$store.dispatch("setPage","Agencies");
