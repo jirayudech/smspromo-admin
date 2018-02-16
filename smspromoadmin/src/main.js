@@ -28,13 +28,13 @@ function VotingItem(item) {
     firebase.storage().ref("items").child(item.image_loc).getDownloadURL()
       .then(function(url) {
         item.image_url = url;
-        resolve(item); 
+        resolve(item);
       })
       .catch(function(error) {
         item.image_url = "https://placeholdit.imgix.net/~text?txtsize=16&txt=C&w=50&h=50";
         resolve(item);
-      });   
-  });  
+      });
+  });
   return promise;
 }
 
@@ -54,4 +54,5 @@ const unsubscribe = firebase
 })
 
 export const db = firebase.database();
+export const firestore = firebase.firestore();
 export const campainsRef = db.ref('campaigns');
