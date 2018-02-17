@@ -4,17 +4,6 @@ import firebase from 'firebase'
 
 Vue.use(Router)
 
-// export default new Router({
-//   routes: [
-//     {
-//       path: '/signup',
-//       name: 'SignUp',
-//       component: SignUp
-//     }
-//   ]
-// })
-
-
 const routerOptions = [
   {
     path: '/signup',

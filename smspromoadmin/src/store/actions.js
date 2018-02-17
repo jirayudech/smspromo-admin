@@ -19,11 +19,28 @@ export const actions = {
     commit('setLoading', true)
     firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
       .then(firebaseUser => {
-        commit('setUser', firebaseUser)
-        commit('setLoading', false)
-        commit('setError', null)
-        router.push('/home')
-      })
+    
+          firebase.database().ref('/users/' + firebaseUser.uid).once('value')
+          .then(data => {
+            const dataPairs = data.val()
+    
+            const updatedUser = {
+              id: firebaseUser.uid,
+              identifier: dataPairs.identifier,
+              userType: dataPairs.user_type,
+              email: firebaseUser.email
+            }
+            commit('setUser', updatedUser)
+            commit('setLoading', false)
+            commit('setError', null)
+            router.push('/home')
+          })
+          .catch(error => {
+            console.log(error)
+            commit('setLoading', false)
+            commit('setError', error)
+          })
+        })
       .catch(error => {
         commit('setError', error.message)
         commit('setLoading', false)
