@@ -1,6 +1,6 @@
 <template>
   <v-card>
-    <v-card-text class="text-lg-right">
+    <v-card-text v-if="userIsAdmin" class="text-lg-right">
       <!-- <label class="text-lg-right">Campaign Header:</label>
       <input type="text" v-model="campaignHeader"> -->
       <v-btn color="primary"  id="addButton" @click="submitCampaign()">
