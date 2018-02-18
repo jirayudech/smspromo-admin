@@ -89,27 +89,6 @@
         clipped: false,
         drawer: true,
         fixed: false,
-        items: [{
-          icon: 'home',
-          title: 'Campaigns',
-          link: '/'
-        },{
-          icon: 'contacts',
-          title: 'Users',
-          link: '/users'
-        },{
-          icon: 'contacts',
-          title: 'Clients',
-          link: '/clients'
-        },{
-          icon: 'settings_phone',
-          title: 'Operators',
-          link: '/operators'
-        },{
-          icon: 'settings',
-          title: 'Settings',
-          link: '/settings'
-        }],
         miniVariant: false,
         right: true,
         rightDrawer: false,

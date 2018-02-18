@@ -10,7 +10,7 @@
 
   <v-data-table
     v-bind:headers="headers"
-    v-bind:items="campains"
+    v-bind:items="campaigns"
     v-bind:search="search"
     v-model="selected"
     item-key="name"
@@ -37,10 +37,7 @@
       </td>
       <td class="text-xs-left">{{ props.item.campaign_client }}</td>
       <td class="text-xs-left">
-
-              <!-- <img src="{{ props.item.campaign_client_pic_url }}" alt="avatar"> -->
               <img :src="props.item.campaign_pic_url" height="50">
-
       </td>
       <td class="text-xs-left">{{ props.item.campaign_header }}</td>
       <td class="text-xs-center">
@@ -51,15 +48,15 @@
       </td>
     </template>
   </v-data-table>
-
-
-
   </v-card>
 </template>
 
 <script>
 
-import {campainsRef} from '../main';
+import {campaignsRef} from '../main';
+
+
+
 
 export default {
   name: 'HelloWorld',
@@ -75,8 +72,26 @@ export default {
       ]
     }
   },
-  firebase: {
-    campains:campainsRef
+  firebase: function (){
+
+    if(this.$store.getters.getUser.userType == 'admin' && this.$store.getters.getUser !== null ){
+      return { campaigns: campaignsRef} 
+    }
+    return { campaigns: campaignsRef.orderByChild("campaign_agency").equalTo(this.$store.getters.getUser.id)} 
+    
+  },
+  computed: {
+      isAuthenticated() {
+        return (
+          this.$store.getters.getUser !== null &&
+          this.$store.getters.getUser !== undefined
+        );
+      },
+      userIsAdmin() {
+        return (
+          this.$store.getters.getUser.userType == 'admin' && this.$store.getters.getUser !== null 
+        );
+      }
   },
   methods: {
     submitCampaign(){
