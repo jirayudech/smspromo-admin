@@ -40,10 +40,10 @@
               <img :src="props.item.campaign_pic_url" height="50">
       </td>
       <td class="text-xs-left">{{ props.item.campaign_header }}</td>
-      <td class="text-xs-center">
+      <td v-if="userIsAdmin" class="text-xs-center">
         <v-btn flat small color="warning">Edit</v-btn>
       </td>
-      <td class="text-xs-center">
+      <td v-if="userIsAdmin" class="text-xs-center">
         <v-btn flat small color="error">Remove</v-btn>
       </td>
     </template>
@@ -61,8 +61,8 @@ import {campaignsRef} from '../main';
 export default {
   name: 'HelloWorld',
   data () {
+    if(this.$store.getters.getUser.userType == 'admin' && this.$store.getters.getUser !== null){
     return {
-      msg: 'Welcome to Campaign Management System',
       headers: [
         { text: 'Clients',sortable: true,align: 'center' },
         { text: 'Campaign Picture',sortable: false,align: 'center' },
@@ -71,6 +71,17 @@ export default {
         { text: 'Remove',sortable: false,align: 'center' },
       ]
     }
+    }
+    return {
+      headers: [
+        { text: 'Clients',sortable: true,align: 'center' },
+        { text: 'Campaign Picture',sortable: false,align: 'center' },
+        { text: 'Campaign Headers',sortable: true,align: 'center' },
+      ]
+    }
+      
+    
+
   },
   firebase: function (){
 
