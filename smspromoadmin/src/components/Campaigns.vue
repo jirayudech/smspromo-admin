@@ -1,20 +1,32 @@
 <template>
   <v-card>
-    <v-card-text v-if="userIsAdmin" class="text-lg-right">
-      <!-- <label class="text-lg-right">Campaign Header:</label>
-      <input type="text" v-model="campaignHeader"> -->
-      <v-btn color="primary"  id="addButton" @click="submitCampaign()">
-        <v-icon dark left>add_circle</v-icon> Add Campaign
-      </v-btn>
-    </v-card-text>
+    <v-layout row>
+      <v-card-text class="text-lg-left">
+        <v-layout row>
+        <v-flex xs6>
+          <v-text-field
+            name="search"
+            label="Search"
+            id="search"
+          >
+          </v-text-field>
+        </v-flex><v-icon left>search</v-icon> 
+        </v-layout>
+      </v-card-text>
+         
+      <v-card-text v-if="userIsAdmin" class="text-lg-right">
+        <v-btn color="primary"  id="addButton" to="/campaign">
+          <v-icon dark left>add_circle</v-icon> Add Campaign
+        </v-btn>
+      </v-card-text>
+    </v-layout>
 
   <v-data-table
     v-bind:headers="headers"
     v-bind:items="campaigns"
-    v-bind:search="search"
+    v-bind:search="searchQuery"
+    hide-actions
     v-model="selected"
-    item-key="name"
-    select-all
     class="elevation-1"
   >
     <template slot="headerCell" slot-scope="props">
@@ -28,13 +40,13 @@
       </v-tooltip>
     </template>
     <template slot="items" slot-scope="props">
-      <td>
+      <!-- <td>
         <v-checkbox
           primary
           hide-details
           v-model="props.selected"
         ></v-checkbox>
-      </td>
+      </td> -->
       <td class="text-xs-left">{{ props.item.campaign_client }}</td>
       <td class="text-xs-left">
               <img :src="props.item.campaign_pic_url" height="50">
@@ -55,11 +67,9 @@
 
 import {campaignsRef} from '../main';
 
-
-
-
 export default {
   name: 'HelloWorld',
+  addCampaign: true,
   data () {
     if(this.$store.getters.getUser.userType == 'admin' && this.$store.getters.getUser !== null){
     return {
@@ -79,9 +89,6 @@ export default {
         { text: 'Campaign Headers',sortable: true,align: 'center' },
       ]
     }
-      
-    
-
   },
   firebase: function (){
 

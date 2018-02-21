@@ -55,5 +55,5 @@ const unsubscribe = firebase
 
 export var db = firebase.database();
 export var campaignsRef = db.ref('campaigns')
-export const usersRef = db.ref('users');
-export const clientsRef = db.ref('clients');
+export var usersRef = db.ref('users');
+export var clientsRef = db.ref('clients');

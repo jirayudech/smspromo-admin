@@ -19,6 +19,11 @@ const routerOptions = [
     meta: { requiresAuth: true, title: 'Campaigns' }
   },
   {
+    path: '/campaign',
+    component: 'Campaign',
+    meta: { requiresAuth: true, title: 'Campaign' }
+  },
+  {
     path: '/clients',
     component: 'Clients',
     meta: { requiresAuth: true, title: 'Clients' }
