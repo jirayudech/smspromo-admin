@@ -2,17 +2,18 @@
   <v-card>
     <v-card >
       <v-container> 
-      <v-form v-model="valid">
+      <form @submit.prevent="submitCampaign">
+      <!-- <v-form v-model="valid" > -->
         <v-text-field
           label="Campaign Client"
-          v-model="name"
+          v-model="campaignClient"
           :rules="nameRules"
           :counter="10"
           required
         ></v-text-field>
         <v-text-field
           label="Campaign Header"
-          v-model="name"
+          v-model="campaignHeader"
           :rules="nameRules"
           :counter="70"
           required
@@ -45,12 +46,13 @@
           :counter="10"
           required
         ></v-text-field>
-      </v-form>
-            <v-card-text v-if="userIsAdmin" class="text-lg-right">
-      <!-- <label class="text-lg-right">Campaign Header:</label>
-      <input type="text" v-model="campaignHeader"> -->
-      <v-btn color="primary"  id="addButton" @click="submitCampaign()">
-        <v-icon dark left>add_circle</v-icon> Add Campaign
+      </form>
+      <v-card-text v-if="userIsAdmin" class="text-lg-right">
+      <v-btn color="primary"  id="addButton" >
+         Cancel
+      </v-btn>
+      <v-btn color="primary"  id="addButton" :disabled="!formIsValid" type="submit">
+        Save Campaign
       </v-btn>
     </v-card-text>
       </v-container>      
@@ -60,6 +62,8 @@
 </template>
 
 <script>
+import {campaignsRef} from '../main';
+
 export default {
     computed: {
       isAuthenticated() {
@@ -72,7 +76,19 @@ export default {
         return (
           this.$store.getters.getUser.userType == 'admin' && this.$store.getters.getUser !== null 
         );
+      },
+      formIsValid () {
+        return this.campaignClient !== '' && this.campaignHeader !== '' 
+      },
+      methods: {
+      submitCampaign: function() {
+        alert(this.campaign_header)
+        campainsRef.push({campaign_header: this.campaignHeader})  
+      },
+      setPage() {
+        this.$store.dispatch("setPage","Campaign");
       }
+    }
   }
 }
 </script>

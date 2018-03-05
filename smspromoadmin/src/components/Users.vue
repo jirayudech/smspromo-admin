@@ -3,9 +3,9 @@
     <v-card-text class="text-lg-right">
       <!-- <label class="text-lg-right">Campaign Header:</label>
       <input type="text" v-model="campaignHeader"> -->
-      <v-btn color="primary"  id="addButton" @click="submitCampaign()">
-        <v-icon dark left>add_circle</v-icon> Add User
-      </v-btn>
+        <v-btn color="primary"  id="addButton" @click="gotoAddUser">
+           Add User
+        </v-btn>
     </v-card-text>
 
   <v-data-table
@@ -81,6 +81,9 @@ export default {
     },
     setPage: function() {
         this.$store.dispatch("setPage","Agencies");
+    },
+    gotoAddUser() {
+      this.$router.push({path: "adduser"})
     }
   }
 }

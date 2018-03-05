@@ -62,7 +62,7 @@
 
 <script>
 
-import {campainsRef} from '../main';
+//import {campainsRef} from '../main';
 
 export default {
   name: 'HelloWorld',

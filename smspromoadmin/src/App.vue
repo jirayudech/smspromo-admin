@@ -113,10 +113,6 @@
       toolbarItems() {
         return this.isAuthenticated ? [] : [
           {
-            icon: "face",
-            title: "Sign Up",
-            link: "/singup"
-          }, {
             icon: "lock_open",
             title: "Sign In",
             link: "/singin"

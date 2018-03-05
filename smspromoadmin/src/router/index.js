@@ -6,8 +6,8 @@ Vue.use(Router)
 
 const routerOptions = [
   {
-    path: '/signup',
-    component: 'SignUp'
+    path: '/adduser',
+    component: 'AddUser'
   },
   {
     path: '/signin',
