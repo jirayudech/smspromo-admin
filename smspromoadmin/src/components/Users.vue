@@ -4,7 +4,7 @@
       <!-- <label class="text-lg-right">Campaign Header:</label>
       <input type="text" v-model="campaignHeader"> -->
         <v-btn color="primary"  id="addButton" @click="gotoAddUser">
-           Add User
+           <v-icon dark left>add_circle</v-icon> Add User
         </v-btn>
     </v-card-text>
 

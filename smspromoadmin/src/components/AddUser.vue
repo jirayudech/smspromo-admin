@@ -13,6 +13,42 @@
           </v-flex>
           <v-flex>
             <v-text-field
+              name="name"
+              label="Name"
+              id="name"
+              type="text"
+              v-model="name"
+              required></v-text-field>
+          </v-flex>
+          <v-flex>
+            <v-text-field
+              name="surname"
+              label="Surname"
+              id="surname"
+              type="text"
+              v-model="surname"
+              required></v-text-field>
+          </v-flex>
+          <v-flex>
+            <v-text-field
+              name="telno"
+              label="Telno"
+              id="telno"
+              type="text"
+              v-model="telno"
+              required></v-text-field>
+          </v-flex>
+          <v-flex>
+            <v-select
+              :items="userTypeItems"
+              v-model="userType"
+              label="User Type"
+              single-line
+              bottom
+            ></v-select>
+          </v-flex>
+          <v-flex>
+            <v-text-field
               name="email"
               label="Email"
               id="email"
@@ -52,6 +88,10 @@
   export default {
     data () {
       return {
+        name: '',
+        surname: '',
+        telno: '',
+        userType: '',
         email: '',
         password: '',
         passwordConfirm: '',
@@ -67,6 +107,18 @@
       },
       loading () {
         return this.$store.getters.getLoading
+      },
+      userTypeItems  () {
+        return  [
+          {
+            text: "Company",
+            value : "company"
+          },
+          {
+            text: "Admin",
+            value: 'admin'
+          }
+        ]
       }
     },
     methods: {
@@ -74,7 +126,7 @@
         if (this.comparePasswords !== true) {
           return
         }
-        this.$store.dispatch('userSignUp', { email: this.email, password: this.password })
+        this.$store.dispatch('userSignUp', {name: this.name, surname: this.surname, telno: this.telno, userType: this.userType, email: this.email, password: this.password })
       }
     },
     watch: {

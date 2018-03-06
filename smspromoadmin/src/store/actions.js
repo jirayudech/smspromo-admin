@@ -1,14 +1,23 @@
 import firebase from 'firebase'
 import router from '@/router'
+import { firebaseConfig } from '../config'
 
 export const actions = {
   userSignUp ({commit}, payload) {
     commit('setLoading', true)
-    firebase.auth().createUserWithEmailAndPassword(payload.email, payload.password)
+    var secondaryApp = firebase.initializeApp(firebaseConfig, "Secondary");
+
+    secondaryApp.auth().createUserWithEmailAndPassword(payload.email, payload.password)
       .then(firebaseUser => {
-        commit('setUser', firebaseUser)
-        commit('setLoading', false)
-        router.push('/')
+        firebase.database().ref('/users/').push({identifier: firebaseUser.email, name: payload.name, surname: payload.surname, mobile: payload.telno, user_type: payload.userType})
+        .then(data =>{
+          commit('setLoading', false)
+          router.push('/users')
+        })
+        .catch(error => {
+          commit('setError', error.message)
+          commit('setLoading', false)
+        })
       })
       .catch(error => {
         commit('setError', error.message)
@@ -30,10 +39,11 @@ export const actions = {
               userType: dataPairs.user_type,
               email: firebaseUser.email
             }
-            commit('setUser', updatedUser)
+            commit('setUser', updatedUser) 
+            commit('setUserInfo', updatedUser)
             commit('setLoading', false)
             commit('setError', null)
-            router.push('/home')
+            router.push('/')
           })
           .catch(error => {
             console.log(error)

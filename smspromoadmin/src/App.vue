@@ -107,7 +107,8 @@
       },
       userIsAdmin() {
         return (
-          this.$store.getters.getUser.userType == 'admin' && this.$store.getters.getUser !== null 
+          //this.$store.getters.getUser.userType == 'admin' && 
+          this.$store.getters.getUser !== null 
         );
       },
       toolbarItems() {

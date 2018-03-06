@@ -7,7 +7,8 @@ Vue.use(Router)
 const routerOptions = [
   {
     path: '/adduser',
-    component: 'AddUser'
+    component: 'AddUser',
+    meta: { requiresAuth: true, title: 'Add User' }
   },
   {
     path: '/signin',

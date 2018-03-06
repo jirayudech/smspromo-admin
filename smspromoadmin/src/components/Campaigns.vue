@@ -91,7 +91,6 @@ export default {
     }
   },
   firebase: function (){
-
     if(this.$store.getters.getUser.userType == 'admin' && this.$store.getters.getUser !== null ){
       return { campaigns: campaignsRef} 
     }
