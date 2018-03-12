@@ -60,6 +60,7 @@
 <script>
 
 import {campainsRef} from '../main';
+import {firestore} from '../main';
 
 export default {
   name: 'HelloWorld',
@@ -80,7 +81,7 @@ export default {
   },
   methods: {
     submitCampaign(){
-      campainsRef.push({campaign_header: this.campaignHeader})  
+      campainsRef.push({campaign_header: this.campaignHeader})
     }
   }
 }
