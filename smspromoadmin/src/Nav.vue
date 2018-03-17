@@ -1,6 +1,6 @@
 <template>
-  <v-app>
-<!--     <v-navigation-drawer
+    <div>
+    <v-navigation-drawer
       fixed
       :mini-variant="miniVariant"
       :clipped="clipped"
@@ -23,9 +23,8 @@
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
-    </v-navigation-drawer> -->
-    <navigation></navigation>
-<!--     <v-toolbar fixed app :clipped-left="clipped">
+    </v-navigation-drawer> 
+      <v-toolbar fixed app :clipped-left="clipped">
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-btn icon @click.stop="miniVariant = !miniVariant">
         <v-icon v-html="miniVariant ? 'chevron_right' : 'chevron_left'"></v-icon>
@@ -53,36 +52,9 @@
       {{ item.title }}
     </v-btn>
 
-    </v-toolbar> -->
-    <v-content>
-      <v-container fluid>
-        <!-- Redered Content Show Here. -->
-        <router-view></router-view> 
-      </v-container>
-    </v-content>
-    <v-navigation-drawer
-      temporary
-      :right="right"
-      v-model="rightDrawer"
-      fixed
-    >
-      <v-list>
-        <v-list-tile @click.native="right = !right">
-          <v-list-tile-action>
-            <v-icon>compare_arrows</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-title>Switch drawer (click me)</v-list-tile-title>
-        </v-list-tile>
-      </v-list>
-    </v-navigation-drawer>
-
-
-    <v-footer :fixed="fixed" app>
-      <span>&copy; RGT 2017</span>
-    </v-footer>
-  </v-app>
+    </v-toolbar>
+    </div>
 </template>
-
 <script>
   export default {
     data () {

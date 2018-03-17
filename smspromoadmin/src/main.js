@@ -11,6 +11,9 @@ import { firebaseConfig } from './config'
 import App from './App'
 import router from './router'
 import VueFire from 'vuefire'
+import Nav from './Nav'
+
+Vue.component('navigation', Nav)
 
 Vue.use(VueFire)
 Vue.use(Vuetify)
