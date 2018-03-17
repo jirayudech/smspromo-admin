@@ -111,8 +111,12 @@
       userTypeItems  () {
         return  [
           {
-            text: "Company",
-            value : "company"
+            text: "Company User",
+            value : "companyuser"
+          },
+          {
+            text: "Company Admin",
+            value : "companyadmin"
           },
           {
             text: "Admin",

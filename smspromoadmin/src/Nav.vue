@@ -57,6 +57,7 @@
 </template>
 <script>
   export default {
+    props: ['menuItems','title'],
     data () {
       return {
         clipped: false,
@@ -78,12 +79,6 @@
           this.$store.getters.getUser !== undefined
         );
       },
-      userIsAdmin() {
-        return (
-          //this.$store.getters.getUser.userType == 'admin' && 
-          this.$store.getters.getUser !== null 
-        );
-      },
       toolbarItems() {
         return this.isAuthenticated ? [] : [
           {
@@ -92,60 +87,12 @@
             link: "/singin"
           }
         ];
-      },
-      menuItems () {
-        let menuItems = []
-        if (this.isAuthenticated && this.userIsAdmin) {
-          menuItems = [
-                {
-                  icon: 'home',
-                  title: 'Campaigns',
-                  link: '/'
-                },{
-                  icon: 'contacts',
-                  title: 'Users',
-                  link: '/users'
-                },{
-                  icon: 'contacts',
-                  title: 'Clients',
-                  link: '/clients'
-                },{
-                  icon: 'settings_phone',
-                  title: 'Operators',
-                  link: '/operators'
-                },{
-                  icon: 'settings',
-                  title: 'Settings',
-                  link: '/settings'
-                }
-          ]
-        } else if (this.isAuthenticated && !this.userIsAdmin) {
-          menuItems = [
-                {
-                  icon: 'home',
-                  title: 'Campaigns',
-                  link: '/'
-                },{
-                  icon: 'contacts',
-                  title: 'Clients',
-                  link: '/clients'
-                },{
-                  icon: 'settings',
-                  title: 'Settings',
-                  link: '/settings'
-                }
-          ]
-        }
-        return menuItems
       }
     },
     methods: {
       userSignOut() {
         this.$store.dispatch("userSignOut");
       }
-    },
-    beforeUpdate () {
-      this.title = document.title
     }
   }
 </script>

@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <navigation></navigation>
+    <navigation :menuItems="menuItems" :title="title"></navigation>
 
     <v-content>
       <v-container fluid>
@@ -8,23 +8,6 @@
         <router-view></router-view> 
       </v-container>
     </v-content>
-    
-    <v-navigation-drawer
-      temporary
-      :right="right"
-      v-model="rightDrawer"
-      fixed
-    >
-      <v-list>
-        <v-list-tile @click.native="right = !right">
-          <v-list-tile-action>
-            <v-icon>compare_arrows</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-title>Switch drawer (click me)</v-list-tile-title>
-        </v-list-tile>
-      </v-list>
-    </v-navigation-drawer>
-
 
     <v-footer :fixed="fixed" app>
       <span>&copy; RGT 2017</span>
@@ -32,7 +15,7 @@
   </v-app>
 </template>
 
-<script>
+ <script>
   export default {
     data () {
       return {
@@ -46,9 +29,6 @@
       }
     }, 
     computed: {
-      appName() {
-        return this.$store.getters.appTitle
-      },
       isAuthenticated() {
         return (
           this.$store.getters.getUser !== null &&
@@ -57,18 +37,9 @@
       },
       userIsAdmin() {
         return (
-          //this.$store.getters.getUser.userType == 'admin' && 
+          this.$store.getters.getUser.userType == 'admin' && 
           this.$store.getters.getUser !== null 
         );
-      },
-      toolbarItems() {
-        return this.isAuthenticated ? [] : [
-          {
-            icon: "lock_open",
-            title: "Sign In",
-            link: "/singin"
-          }
-        ];
       },
       menuItems () {
         let menuItems = []
@@ -107,6 +78,11 @@
                   title: 'Clients',
                   link: '/clients'
                 },{
+                  icon: 'contacts',
+                  title: 'Users',
+                  link: '/users'
+                },                
+                {
                   icon: 'settings',
                   title: 'Settings',
                   link: '/settings'
@@ -116,13 +92,8 @@
         return menuItems
       }
     },
-    methods: {
-      userSignOut() {
-        this.$store.dispatch("userSignOut");
-      }
-    },
     beforeUpdate () {
       this.title = document.title
     }
   }
-</script>
+</script> 
