@@ -47,7 +47,7 @@
 <script>
 
 import {usersRef} from '../main';
-import {companiesRef} from '../main';
+
 
 export default {
   name: 'HelloWorld',
@@ -64,8 +64,7 @@ export default {
     }
   },
   firebase: {
-    users:usersRef,
-    companies:companiesRef
+    users:usersRef
   },
   methods: {
     submitCampaign(){

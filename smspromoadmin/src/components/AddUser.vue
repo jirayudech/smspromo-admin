@@ -29,26 +29,16 @@
               v-model="surname"
               required></v-text-field>
           </v-flex>
-<!--           <v-flex>
-            <v-text-field
-              name="company"
+          <v-flex>
+            <v-select
+              :items="companies"
+              item-text="companyName"
+              item-value="value"
               label="บริษัท"
-              id="company"
-              type=""
-              v-model="company"
-              required></v-text-field>
-          </v-flex> -->
-
-      <v-flex>
-        <v-select
-          :items="{companies}"
-          v-model="company"
-          label="Company"
-          single-line
-        ></v-select>
-      </v-flex>
-
-
+              single-line
+              required
+            ></v-select>
+          </v-flex>
           <v-flex>
             <v-text-field
               name="email"
@@ -94,23 +84,24 @@ import {companiesRef} from '../main';
       return {
         name: '',
         surname: '',
-        telno: '',
-        userType: '',
+        companies: [],
         email: '',
         password: '',
         passwordConfirm: '',
         alert: false
       }
     },
-    firebase: {
-      companies:companiesRef
-      
-/*       .once("value")
-        .then(function(snapshot) {
-          var key = snapshot.key; // "ada"
-          var childKey = snapshot.child("companyName") // "last"
-        })
- */    },    
+    firebase: function(){
+       var _this = this
+       companiesRef.once("value").then(function(snap){
+        var __this = _this
+        snap.forEach(function(childSnapshot) {
+            var key = childSnapshot.key; 
+            var companyName = childSnapshot.child("companyName").val()
+            __this.companies.push({"value": key,"companyName": companyName})
+        });
+      })
+     },    
     computed: {
       comparePasswords () {
         return this.password === this.passwordConfirm ? true : 'Password and confirm password don\'t match'
