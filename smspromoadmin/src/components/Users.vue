@@ -14,7 +14,6 @@
     v-bind:search="search"
     v-model="selected"
     item-key="name"
-    select-all
     class="elevation-1"
   >
     <template slot="headerCell" slot-scope="props">
@@ -28,22 +27,14 @@
       </v-tooltip>
     </template>
     <template slot="items" slot-scope="props">
-      <td>
-        <v-checkbox
-          primary
-          hide-details
-          v-model="props.selected"
-        ></v-checkbox>
-      </td>
-      <td class="text-xs-left">{{ props.item['.key'] }}</td>
-      <td class="text-xs-left">{{ props.item.user_type }}</td>
+<!--       <td class="text-xs-left">{{ props.item['.key'] }}</td> -->
+      <td class="text-xs-left">{{ props.item.name + " " + props.item.surname}}</td>
       <td class="text-xs-left">{{ props.item.identifier }}</td>
-      <td class="text-xs-left">{{ props.item.mobile }}</td>
       <td class="text-xs-center">
         <v-btn flat small color="warning">Edit</v-btn>
       </td>
       <td class="text-xs-center">
-        <v-btn flat small color="error">Remove</v-btn>
+        <v-btn flat small color="error">Disable</v-btn>
       </td>
     </template>
   </v-data-table>
@@ -56,6 +47,7 @@
 <script>
 
 import {usersRef} from '../main';
+import {companiesRef} from '../main';
 
 export default {
   name: 'HelloWorld',
@@ -63,24 +55,24 @@ export default {
     return {
       msg: 'Welcome to Campaign Management System',
       headers: [
-        { text: 'UID',sortable: true,align: 'center' },
-        { text: 'User Type',sortable: true,align: 'center' },
-        { text: 'Identifier',sortable: false,align: 'center' },
-        { text: 'mobile',sortable: true,align: 'center' },
-        { text: 'Edit',sortable: false,align: 'center' },
-        { text: 'Remove',sortable: false,align: 'center' },
+/*         { text: 'UID',sortable: true,align: 'center' }, */
+        { text: 'ชื่อ-สกุล',sortable: true,align: 'center' },
+        { text: 'Email',sortable: false,align: 'center' },
+        { text: 'แก้ไข',sortable: false,align: 'center' },
+        { text: 'ยกเลิกสิทธิ์',sortable: false,align: 'center' },
       ]
     }
   },
   firebase: {
-    users:usersRef
+    users:usersRef,
+    companies:companiesRef
   },
   methods: {
     submitCampaign(){
       // campainsRef.push({campaign_header: this.campaignHeader})  
     },
     setPage: function() {
-        this.$store.dispatch("setPage","Agencies");
+        this.$store.dispatch("setPage","Users");
     },
     gotoAddUser() {
       this.$router.push({path: "adduser"})

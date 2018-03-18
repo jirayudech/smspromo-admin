@@ -14,7 +14,7 @@
           <v-flex>
             <v-text-field
               name="name"
-              label="Name"
+              label="ชื่อ"
               id="name"
               type="text"
               v-model="name"
@@ -23,34 +23,36 @@
           <v-flex>
             <v-text-field
               name="surname"
-              label="Surname"
+              label="นามสกุล"
               id="surname"
               type="text"
               v-model="surname"
               required></v-text-field>
           </v-flex>
-          <v-flex>
+<!--           <v-flex>
             <v-text-field
-              name="telno"
-              label="Telno"
-              id="telno"
-              type="text"
-              v-model="telno"
+              name="company"
+              label="บริษัท"
+              id="company"
+              type=""
+              v-model="company"
               required></v-text-field>
-          </v-flex>
-          <v-flex>
-            <v-select
-              :items="userTypeItems"
-              v-model="userType"
-              label="User Type"
-              single-line
-              bottom
-            ></v-select>
-          </v-flex>
+          </v-flex> -->
+
+      <v-flex>
+        <v-select
+          :items="{companies}"
+          v-model="company"
+          label="Company"
+          single-line
+        ></v-select>
+      </v-flex>
+
+
           <v-flex>
             <v-text-field
               name="email"
-              label="Email"
+              label="Email สำหรับ Login"
               id="email"
               type="email"
               v-model="email"
@@ -59,7 +61,7 @@
           <v-flex>
             <v-text-field
               name="password"
-              label="Password"
+              label="พาสเวิร์ด"
               id="password"
               type="password"
               v-model="password"
@@ -68,7 +70,7 @@
           <v-flex>
             <v-text-field
               name="confirmPassword"
-              label="Confirm Password"
+              label="ยืนยันพาสเวิร์ด"
               id="confirmPassword"
               type="password"
               v-model="passwordConfirm"
@@ -85,6 +87,8 @@
 </template>
 
 <script>
+import {companiesRef} from '../main';
+
   export default {
     data () {
       return {
@@ -98,6 +102,15 @@
         alert: false
       }
     },
+    firebase: {
+      companies:companiesRef
+      
+/*       .once("value")
+        .then(function(snapshot) {
+          var key = snapshot.key; // "ada"
+          var childKey = snapshot.child("companyName") // "last"
+        })
+ */    },    
     computed: {
       comparePasswords () {
         return this.password === this.passwordConfirm ? true : 'Password and confirm password don\'t match'
@@ -107,22 +120,6 @@
       },
       loading () {
         return this.$store.getters.getLoading
-      },
-      userTypeItems  () {
-        return  [
-          {
-            text: "Company User",
-            value : "companyuser"
-          },
-          {
-            text: "Company Admin",
-            value : "companyadmin"
-          },
-          {
-            text: "Admin",
-            value: 'admin'
-          }
-        ]
       }
     },
     methods: {

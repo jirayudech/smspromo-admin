@@ -15,6 +15,16 @@ const routerOptions = [
     component: 'SignIn'
   },
   {
+    path: '/companies',
+    component: 'Companies',
+    meta: { requiresAuth: true, title: 'Companies' }
+  },
+  {
+    path: '/brands',
+    component: 'Brands',
+    meta: { requiresAuth: true, title: 'Brands' }
+  },
+  {
     path: '/',
     component: 'Campaigns',
     meta: { requiresAuth: true, title: 'Campaigns' }

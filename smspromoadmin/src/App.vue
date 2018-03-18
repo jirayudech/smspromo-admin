@@ -10,7 +10,7 @@
     </v-content>
 
     <v-footer :fixed="fixed" app>
-      <span>&copy; RGT 2017</span>
+      <span>&copy; RGT Soft 2017</span>
     </v-footer>
   </v-app>
 </template>
@@ -55,8 +55,12 @@
                   link: '/users'
                 },{
                   icon: 'contacts',
-                  title: 'Clients',
-                  link: '/clients'
+                  title: 'Companies',
+                  link: '/companies'
+                },{
+                  icon: 'contacts',
+                  title: 'Brands',
+                  link: '/brands'
                 },{
                   icon: 'settings_phone',
                   title: 'Operators',
@@ -75,7 +79,7 @@
                   link: '/'
                 },{
                   icon: 'contacts',
-                  title: 'Clients',
+                  title: 'Brands',
                   link: '/clients'
                 },{
                   icon: 'contacts',
