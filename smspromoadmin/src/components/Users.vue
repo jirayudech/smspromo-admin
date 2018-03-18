@@ -27,12 +27,14 @@
       </v-tooltip>
     </template>
     <template slot="items" slot-scope="props">
-<!--       <td class="text-xs-left">{{ props.item['.key'] }}</td> -->
+<!--       <td class="text-xs-left">{{ props.item['.key'] }}</td>
+ -->      
+      <td class="text-xs-left">{{ props.item.companyName}}</td>
       <td class="text-xs-left">{{ props.item.name + " " + props.item.surname}}</td>
       <td class="text-xs-left">{{ props.item.identifier }}</td>
-      <td class="text-xs-center">
+<!--       <td class="text-xs-center">
         <v-btn flat small color="warning">Edit</v-btn>
-      </td>
+      </td> -->
       <td class="text-xs-center">
         <v-btn flat small color="error">Disable</v-btn>
       </td>
@@ -55,10 +57,10 @@ export default {
     return {
       msg: 'Welcome to Campaign Management System',
       headers: [
-/*         { text: 'UID',sortable: true,align: 'center' }, */
+        { text: 'บริษัท',sortable: true,align: 'center' }, 
         { text: 'ชื่อ-สกุล',sortable: true,align: 'center' },
         { text: 'Email',sortable: false,align: 'center' },
-        { text: 'แก้ไข',sortable: false,align: 'center' },
+/*         { text: 'แก้ไข',sortable: false,align: 'center' }, */
         { text: 'ยกเลิกสิทธิ์',sortable: false,align: 'center' },
       ]
     }

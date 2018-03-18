@@ -9,7 +9,7 @@ export const actions = {
 
     secondaryApp.auth().createUserWithEmailAndPassword(payload.email, payload.password)
       .then(firebaseUser => {
-        firebase.database().ref('/users/').push({identifier: firebaseUser.email, name: payload.name, surname: payload.surname, mobile: payload.telno, user_type: payload.userType})
+        firebase.database().ref('/users/').push({identifier: firebaseUser.email, name: payload.name, surname: payload.surname, companyId: payload.companyId, companyName: payload.companyName, user_type: 'user'})
         .then(data =>{
           commit('setLoading', false)
           router.push('/users')

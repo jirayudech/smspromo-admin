@@ -26,6 +26,11 @@ const routerOptions = [
   },
   {
     path: '/',
+    component: 'CampaignsAdmin',
+    meta: { requiresAuth: true, title: 'Campaigns Admin' }
+  },
+  {
+    path: '/campaigns',
     component: 'Campaigns',
     meta: { requiresAuth: true, title: 'Campaigns' }
   },
@@ -74,6 +79,9 @@ router.beforeEach((to, from, next) => {
     .currentUser
   if (requiresAuth && !user) {
     next('/signin')
+  }
+  if (to == '/' && user.email != 'jirawallet@gmail.com'){
+    next('/campaigns')
   }
   next()
 })

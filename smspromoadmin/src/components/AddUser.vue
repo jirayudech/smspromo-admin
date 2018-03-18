@@ -31,6 +31,7 @@
           </v-flex>
           <v-flex>
             <v-select
+              v-model="companyId"
               :items="companies"
               item-text="companyName"
               item-value="value"
@@ -85,6 +86,8 @@ import {companiesRef} from '../main';
         name: '',
         surname: '',
         companies: [],
+        companiesArray: [],
+        companyId: '',
         email: '',
         password: '',
         passwordConfirm: '',
@@ -99,12 +102,13 @@ import {companiesRef} from '../main';
             var key = childSnapshot.key; 
             var companyName = childSnapshot.child("companyName").val()
             __this.companies.push({"value": key,"companyName": companyName})
+            __this.companiesArray[key] = companyName
         });
       })
      },    
     computed: {
       comparePasswords () {
-        return this.password === this.passwordConfirm ? true : 'Password and confirm password don\'t match'
+        return this.password === this.passwordConfirm ? true : 'พาสเวิร์ด และ ยืนยันพาสเวิร์ด ไม่ตรงกัน'
       },
       error () {
         return this.$store.getters.getError
@@ -118,7 +122,9 @@ import {companiesRef} from '../main';
         if (this.comparePasswords !== true) {
           return
         }
-        this.$store.dispatch('userSignUp', {name: this.name, surname: this.surname, telno: this.telno, userType: this.userType, email: this.email, password: this.password })
+      let companyName = this.companiesArray[this.companyId]
+
+        this.$store.dispatch('userSignUp', {name: this.name, surname: this.surname,companyId: this.companyId, companyName: companyName,  email: this.email, password: this.password })
       }
     },
     watch: {

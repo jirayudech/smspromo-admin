@@ -14,6 +14,11 @@
         </v-layout>
       </v-card-text>
          
+      <v-card-text v-if="userIsAdmin" class="text-lg-right">
+        <v-btn color="primary"  id="addButton" to="/campaign">
+          <v-icon dark left>add_circle</v-icon> Add Campaign
+        </v-btn>
+      </v-card-text>
     </v-layout>
 
   <v-data-table
@@ -35,7 +40,13 @@
       </v-tooltip>
     </template>
     <template slot="items" slot-scope="props">
-
+      <!-- <td>
+        <v-checkbox
+          primary
+          hide-details
+          v-model="props.selected"
+        ></v-checkbox>
+      </td> -->
       <td class="text-xs-left">{{ props.item.campaign_client }}</td>
       <td class="text-xs-left">
               <img :src="props.item.campaign_pic_url" height="50">
