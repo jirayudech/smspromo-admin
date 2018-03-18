@@ -79,10 +79,6 @@
                   link: '/'
                 },{
                   icon: 'contacts',
-                  title: 'Brands',
-                  link: '/clients'
-                },{
-                  icon: 'contacts',
                   title: 'Users',
                   link: '/users'
                 },                
