@@ -41,13 +41,13 @@
     </template>
     <template slot="items" slot-scope="props">
       <td class="text-xs-left">{{ props.item.companyName }}</td>
-      <td class="text-xs-left">{{ props.item.companyContactName }}</td>
-      <td class="text-xs-left">{{ props.item.companyContactNumber }}</td>
-      <td v-if="userIsAdmin" class="text-xs-center">
+<!--       <td class="text-xs-left">{{ props.item.companyContactName }}</td>
+      <td class="text-xs-left">{{ props.item.companyContactNumber }}</td> -->
+<!--       <td v-if="userIsAdmin" class="text-xs-center">
         <v-btn flat small color="warning">Edit</v-btn>
-      </td>
+      </td> -->
       <td v-if="userIsAdmin" class="text-xs-center">
-        <v-btn flat small color="error">Remove</v-btn>
+        <v-btn flat small color="error">Disable</v-btn>
       </td>
     </template>
   </v-data-table>
@@ -66,10 +66,10 @@ export default {
     return {
       headers: [
         { text: 'Name',sortable: true,align: 'center' },
-        { text: 'Contact Name',sortable: true,align: 'center' },
-        { text: 'Contact Number',sortable: true,align: 'center' },
-        { text: 'Edit',sortable: false,align: 'center' },
-        { text: 'Remove',sortable: false,align: 'center' },
+/*         { text: 'Contact Name',sortable: true,align: 'center' },
+        { text: 'Contact Number',sortable: true,align: 'center' }, */
+/*         { text: 'Edit',sortable: false,align: 'center' }, */
+        { text: 'Disable',sortable: false,align: 'center' },
       ]
     }
     }

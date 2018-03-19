@@ -40,20 +40,14 @@
       </v-tooltip>
     </template>
     <template slot="items" slot-scope="props">
-      <!-- <td>
-        <v-checkbox
-          primary
-          hide-details
-          v-model="props.selected"
-        ></v-checkbox>
-      </td> -->
+      <td class="text-xs-left">{{ props.item['.key'] }}</td>
       <td class="text-xs-left">{{ props.item.campaign_client }}</td>
       <td class="text-xs-left">
               <img :src="props.item.campaign_pic_url" height="50">
       </td>
       <td class="text-xs-left">{{ props.item.campaign_header }}</td>
       <td v-if="userIsAdmin" class="text-xs-center">
-        <v-btn flat small color="warning">Edit</v-btn>
+        <v-btn flat small color="warning" :to="'/campaignadmin/edit/'+props.item['.key']">Edit</v-btn>
       </td>
       <td v-if="userIsAdmin" class="text-xs-center">
         <v-btn flat small color="error">Remove</v-btn>

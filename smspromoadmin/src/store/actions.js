@@ -12,7 +12,7 @@ export const actions = {
         firebase.database().ref('/users/').push({identifier: firebaseUser.email, name: payload.name, surname: payload.surname, companyId: payload.companyId, companyName: payload.companyName, user_type: 'user'})
         .then(data =>{
           commit('setLoading', false)
-          router.push('/users')
+          router.push('/usersadmin')
         })
         .catch(error => {
           commit('setError', error.message)

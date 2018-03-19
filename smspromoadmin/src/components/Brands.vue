@@ -45,7 +45,7 @@
               <img :src="props.item.logo" height="50">
       </td>
       <td v-if="userIsAdmin" class="text-xs-center">
-        <v-btn flat small color="error">Remove</v-btn>
+        <v-btn flat small color="error">Disable</v-btn>
       </td>
     </template>
   </v-data-table>
@@ -65,7 +65,7 @@ export default {
         headers: [
             { text: 'Brand Name',sortable: true,align: 'center' },
             { text: 'Logo',sortable: true,align: 'center' },
-            { text: 'Remove',sortable: false,align: 'center' },
+            { text: 'Disable',sortable: false,align: 'center' },
         ]
         }
     }

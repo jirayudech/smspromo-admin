@@ -1,7 +1,8 @@
 <template>
   <v-card>
     <v-card >
-      <v-container> 
+      <v-container>
+      <div>id: {{ $route.params.id }}</div>   
       <form @submit.prevent="submitCampaign">
       <!-- <v-form v-model="valid" > -->
         <v-text-field

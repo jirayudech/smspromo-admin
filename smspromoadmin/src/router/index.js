@@ -35,9 +35,9 @@ const routerOptions = [
     meta: { requiresAuth: true, title: 'Campaigns' }
   },
   {
-    path: '/campaignaddedit',
-    component: 'CampaignAddEdit',
-    meta: { requiresAuth: true, title: 'Campaign Add/Edit' }
+    path: '/campaignadmin/:edit/:id',
+    component: 'CampaignAdmin',
+    meta: { requiresAuth: true, title: 'Campaign' }
   },
   {
     path: '/campaign',
