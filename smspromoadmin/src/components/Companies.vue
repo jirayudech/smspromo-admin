@@ -40,13 +40,6 @@
       </v-tooltip>
     </template>
     <template slot="items" slot-scope="props">
-      <!-- <td>
-        <v-checkbox
-          primary
-          hide-details
-          v-model="props.selected"
-        ></v-checkbox>
-      </td> -->
       <td class="text-xs-left">{{ props.item.companyName }}</td>
       <td class="text-xs-left">{{ props.item.companyContactName }}</td>
       <td class="text-xs-left">{{ props.item.companyContactNumber }}</td>

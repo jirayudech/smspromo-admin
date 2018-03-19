@@ -52,7 +52,7 @@
                 },{
                   icon: 'contacts',
                   title: 'Users',
-                  link: '/users'
+                  link: '/usersadmin'
                 },{
                   icon: 'contacts',
                   title: 'Companies',
@@ -76,7 +76,7 @@
                 {
                   icon: 'home',
                   title: 'Campaigns',
-                  link: '/'
+                  link: '/campaigns'
                 },{
                   icon: 'contacts',
                   title: 'Users',

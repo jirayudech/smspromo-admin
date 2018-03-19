@@ -61,3 +61,4 @@ export var campaignsRef = db.ref('campaigns')
 export var usersRef = db.ref('users');
 export var clientsRef = db.ref('clients');
 export var companiesRef = db.ref('companies');
+export var brandsRef = db.ref('brands');

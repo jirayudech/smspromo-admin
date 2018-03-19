@@ -1,5 +1,13 @@
 <template>
   <v-card>
+    <v-card-text class="text-lg-right">
+      <!-- <label class="text-lg-right">Campaign Header:</label>
+      <input type="text" v-model="campaignHeader"> -->
+        <v-btn color="primary"  id="addButton" @click="gotoAddUser">
+           <v-icon dark left>add_circle</v-icon> Add User
+        </v-btn>
+    </v-card-text>
+
   <v-data-table
     v-bind:headers="headers"
     v-bind:items="users"
@@ -18,9 +26,18 @@
         </span>
       </v-tooltip>
     </template>
-    <template slot="items" slot-scope="props">  
+    <template slot="items" slot-scope="props">
+<!--       <td class="text-xs-left">{{ props.item['.key'] }}</td>
+ -->      
+      <td class="text-xs-left">{{ props.item.companyName}}</td>
       <td class="text-xs-left">{{ props.item.name + " " + props.item.surname}}</td>
       <td class="text-xs-left">{{ props.item.identifier }}</td>
+<!--       <td class="text-xs-center">
+        <v-btn flat small color="warning">Edit</v-btn>
+      </td> -->
+      <td class="text-xs-center">
+        <v-btn flat small color="error">Disable</v-btn>
+      </td>
     </template>
   </v-data-table>
 
@@ -40,8 +57,11 @@ export default {
     return {
       msg: 'Welcome to Campaign Management System',
       headers: [
+        { text: 'บริษัท',sortable: true,align: 'center' }, 
         { text: 'ชื่อ-สกุล',sortable: true,align: 'center' },
         { text: 'Email',sortable: false,align: 'center' },
+/*         { text: 'แก้ไข',sortable: false,align: 'center' }, */
+        { text: 'ยกเลิกสิทธิ์',sortable: false,align: 'center' },
       ]
     }
   },

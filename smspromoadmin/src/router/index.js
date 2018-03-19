@@ -6,9 +6,9 @@ Vue.use(Router)
 
 const routerOptions = [
   {
-    path: '/adduser',
-    component: 'AddUser',
-    meta: { requiresAuth: true, title: 'Add User' }
+    path: '/useradd',
+    component: 'UserAdd',
+    meta: { requiresAuth: true, title: 'User Add' }
   },
   {
     path: '/signin',
@@ -35,6 +35,11 @@ const routerOptions = [
     meta: { requiresAuth: true, title: 'Campaigns' }
   },
   {
+    path: '/campaignaddedit',
+    component: 'CampaignAddEdit',
+    meta: { requiresAuth: true, title: 'Campaign Add/Edit' }
+  },
+  {
     path: '/campaign',
     component: 'Campaign',
     meta: { requiresAuth: true, title: 'Campaign' }
@@ -43,6 +48,11 @@ const routerOptions = [
     path: '/clients',
     component: 'Clients',
     meta: { requiresAuth: true, title: 'Clients' }
+  },
+  {
+    path: '/usersadmin',
+    component: 'UsersAdmin',
+    meta: { requiresAuth: true, title: 'Users' }
   },
   {
     path: '/users',

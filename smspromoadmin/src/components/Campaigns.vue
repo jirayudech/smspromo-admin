@@ -80,11 +80,8 @@ export default {
     }
   },
   firebase: function (){
-    if(this.$store.getters.getUser.userType == 'admin' && this.$store.getters.getUser !== null ){
-      return { campaigns: campaignsRef} 
-    }
-    return { campaigns: campaignsRef.orderByChild("campaign_agency").equalTo(this.$store.getters.getUser.id)} 
-    
+    //return { campaigns: campaignsRef.orderByChild("campaign_agency").equalTo(this.$store.getters.getUser.id)} 
+    return { campaigns: campaignsRef} 
   },
   computed: {
       isAuthenticated() {
@@ -104,7 +101,7 @@ export default {
       campainsRef.push({campaign_header: this.campaignHeader})  
     },
     setPage() {
-        this.$store.dispatch("setPage","Clients");
+        this.$store.dispatch("setPage","Campaigns");
     }
   }
 }
