@@ -37,8 +37,6 @@
       </v-btn>
       <v-toolbar-title v-text="appName+title"></v-toolbar-title>
       <v-spacer></v-spacer>
-
-
     <v-btn flat @click="userSignOut" v-if="isAuthenticated">
       <v-icon left>exit_to_app</v-icon>
       Sign Out
@@ -51,7 +49,6 @@
       <v-icon left>{{ item.icon }}</v-icon>
       {{ item.title }}
     </v-btn>
-
     </v-toolbar>
     </div>
 </template>

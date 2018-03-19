@@ -1,10 +1,8 @@
 <template>
   <v-card>
     <v-card-text class="text-lg-right">
-      <!-- <label class="text-lg-right">Campaign Header:</label>
-      <input type="text" v-model="campaignHeader"> -->
-        <v-btn color="primary"  id="addButton" @click="gotoAddUser">
-           <v-icon dark left>add_circle</v-icon> Add User
+        <v-btn color="primary"  id="addButton" to="/useradd">
+          <v-icon dark left>add_circle</v-icon> User Add
         </v-btn>
     </v-card-text>
 
