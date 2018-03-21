@@ -3,8 +3,7 @@
     <v-card >
       <v-container>
       <div>Mode: {{$route.params.mode}}</div> 
-      <form @submit.prevent="submitCampaign" v-for="c in campaign">
-      <!-- <v-form v-model="valid" > -->
+      <form @submit.prevent="submitCampaign" v-for="c in campaign" v-bind:key="c['.key']">
         <v-text-field
           label="Company"
           v-model="c.campaign_company"

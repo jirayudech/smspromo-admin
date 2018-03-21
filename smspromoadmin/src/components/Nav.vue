@@ -44,7 +44,7 @@
     <v-btn
       flat
       v-for="(item, i) in toolbarItems"
-      :key="item.i"
+      :key="i"
       :to="item.link">
       <v-icon left>{{ item.icon }}</v-icon>
       {{ item.title }}
