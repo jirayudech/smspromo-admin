@@ -63,5 +63,9 @@ export const actions = {
     router.push('/signin')
   },setPage ({commit}, payload) {
     commit('setPage', payload)
+  },setStartLoading({commit}){
+    commit('setLoading', true)
+  },setStopLoading({commit}){
+    commit('setLoading', false)
   }
 }

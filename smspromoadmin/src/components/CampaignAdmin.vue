@@ -2,48 +2,73 @@
   <v-card>
     <v-card >
       <v-container>
-      <div>id: {{ $route.params.id }}</div>   
-      <form @submit.prevent="submitCampaign">
+      <div>Mode: {{$route.params.mode}}</div> 
+      <form @submit.prevent="submitCampaign" v-for="c in campaign">
       <!-- <v-form v-model="valid" > -->
         <v-text-field
-          label="Campaign Client"
-          v-model="campaignClient"
+          label="Company"
+          v-model="c.campaign_company"
           :rules="nameRules"
           :counter="10"
           required
         ></v-text-field>
         <v-text-field
-          label="Campaign Header"
-          v-model="campaignHeader"
-          :rules="nameRules"
+          label="Brand"
+          v-model="c.campaign_brand"
+          :counter="10"
+          required
+        ></v-text-field>
+        <v-text-field
+          label="Header"
+          v-model="c.campaign_header"
           :counter="70"
           required
         ></v-text-field>
         <v-text-field
-          label="Campaign Description"
-          v-model="name"
-          :rules="nameRules"
+          label="Description"
+          v-model="c.campaign_desc"
           :counter="10"
           required
         ></v-text-field>
         <v-text-field
-          label="Campaign Category"
-          v-model="name"
-          :rules="nameRules"
+          label="Picture"
+          v-model="campaignPictureUrl"
+          :counter="10"
+          required
+        ></v-text-field>
+        <v-text-field
+          label="Category"
+          v-model="c.campaign_category"
+          :counter="10"
+          required
+        ></v-text-field>
+        <v-text-field
+          label="Start Date"
+          v-model="campaignStartDate"
+          :counter="10"
+          required
+        ></v-text-field>
+        <v-text-field
+          label="End Date"
+          v-model="campaignEndDate"
           :counter="10"
           required
         ></v-text-field>
         <v-text-field
           label="SMS Prefix"
-          v-model="name"
-          :rules="nameRules"
+          v-model="c.campaign_sms_prefix"
+          :counter="10"
+          required
+        ></v-text-field>
+        <v-text-field
+          label="SMS No"
+          v-model="c.campaign_sms_no"
           :counter="10"
           required
         ></v-text-field>
         <v-text-field
           label="SMS Price"
-          v-model="name"
-          :rules="nameRules"
+          v-model="smsPrice"
           :counter="10"
           required
         ></v-text-field>
@@ -66,12 +91,15 @@
 import {campaignsRef} from '../main';
 
 export default {
+    firebase(){
+      return {campaign: campaignsRef.orderByKey().startAt(this.$route.params.id).endAt(this.$route.params.id)} 
+    },
     computed: {
       isAuthenticated() {
         return (
           this.$store.getters.getUser !== null &&
           this.$store.getters.getUser !== undefined
-        );
+        )
       },
       userIsAdmin() {
         return (
@@ -80,17 +108,19 @@ export default {
       },
       formIsValid () {
         return this.campaignClient !== '' && this.campaignHeader !== '' 
+      }
       },
       methods: {
       submitCampaign: function() {
-        alert(this.campaign_header)
         campainsRef.push({campaign_header: this.campaignHeader})  
       },
       setPage() {
         this.$store.dispatch("setPage","Campaign");
+      },
+      nameRules() {
+        return null;
       }
     }
   }
-}
 </script>
 

@@ -7,42 +7,36 @@
         <v-text-field
           label="Campaign Client"
           v-model="campaignClient"
-          :rules="nameRules"
           :counter="10"
           required
         ></v-text-field>
         <v-text-field
           label="Campaign Header"
           v-model="campaignHeader"
-          :rules="nameRules"
           :counter="70"
           required
         ></v-text-field>
         <v-text-field
           label="Campaign Description"
           v-model="name"
-          :rules="nameRules"
           :counter="10"
           required
         ></v-text-field>
         <v-text-field
           label="Campaign Category"
           v-model="name"
-          :rules="nameRules"
           :counter="10"
           required
         ></v-text-field>
         <v-text-field
           label="SMS Prefix"
           v-model="name"
-          :rules="nameRules"
           :counter="10"
           required
         ></v-text-field>
         <v-text-field
           label="SMS Price"
           v-model="name"
-          :rules="nameRules"
           :counter="10"
           required
         ></v-text-field>

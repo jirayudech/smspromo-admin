@@ -15,7 +15,7 @@
       </v-card-text>
          
       <v-card-text v-if="userIsAdmin" class="text-lg-right">
-        <v-btn color="primary"  id="addButton" to="/campaign">
+        <v-btn color="primary"  id="addButton" to="/companyadd">
           <v-icon dark left>add_circle</v-icon> Add Company
         </v-btn>
       </v-card-text>

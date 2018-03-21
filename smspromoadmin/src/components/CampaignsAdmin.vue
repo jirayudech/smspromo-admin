@@ -40,7 +40,6 @@
       </v-tooltip>
     </template>
     <template slot="items" slot-scope="props">
-      <td class="text-xs-left">{{ props.item['.key'] }}</td>
       <td class="text-xs-left">{{ props.item.campaign_client }}</td>
       <td class="text-xs-left">
               <img :src="props.item.campaign_pic_url" height="50">
@@ -62,7 +61,6 @@
 import {campaignsRef} from '../main';
 
 export default {
-  name: 'HelloWorld',
   addCampaign: true,
   data () {
     if(this.$store.getters.getUser.userType == 'admin' && this.$store.getters.getUser !== null){
@@ -109,7 +107,7 @@ export default {
       campainsRef.push({campaign_header: this.campaignHeader})  
     },
     setPage() {
-        this.$store.dispatch("setPage","Clients");
+      this.$store.dispatch("setPage","Clients");
     }
   }
 }

@@ -13,17 +13,16 @@
         </v-flex><v-icon left>search</v-icon> 
         </v-layout>
       </v-card-text>
-         
     </v-layout>
 
-  <v-data-table
-    v-bind:headers="headers"
-    v-bind:items="campaigns"
-    v-bind:search="searchQuery"
-    hide-actions
-    v-model="selected"
-    class="elevation-1"
-  >
+    <v-data-table
+      v-bind:headers="headers"
+      v-bind:items="campaigns"
+      v-bind:search="searchQuery"
+      hide-actions
+      v-model="selected"
+      class="elevation-1"
+    >
     <template slot="headerCell" slot-scope="props">
       <v-tooltip bottom>
         <span slot="activator">
@@ -80,8 +79,7 @@ export default {
     }
   },
   firebase: function (){
-    //return { campaigns: campaignsRef.orderByChild("campaign_agency").equalTo(this.$store.getters.getUser.id)} 
-    return { campaigns: campaignsRef} 
+    return { campaigns: campaignsRef.orderByChild("campaign_agency").equalTo("company2")} 
   },
   computed: {
       isAuthenticated() {

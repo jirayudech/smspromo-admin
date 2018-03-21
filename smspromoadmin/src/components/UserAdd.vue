@@ -1,7 +1,7 @@
 <template>
   <v-layout column>
     <v-flex xs12 class="text-xs-center" mt-5>
-      <h3>Add User</h3>
+      <h3>User</h3>
     </v-flex>
     <v-flex xs12 sm6 offset-sm3 mt-3>
       <form @submit.prevent="userSignUp">

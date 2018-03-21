@@ -20,6 +20,11 @@ const routerOptions = [
     meta: { requiresAuth: true, title: 'Companies' }
   },
   {
+    path: '/companyadd',
+    component: 'CompanyAdd',
+    meta: { requiresAuth: true, title: 'Company Add' }
+  },
+  {
     path: '/brands',
     component: 'Brands',
     meta: { requiresAuth: true, title: 'Brands' }
@@ -35,7 +40,7 @@ const routerOptions = [
     meta: { requiresAuth: true, title: 'Campaigns' }
   },
   {
-    path: '/campaignadmin/:edit/:id',
+    path: '/campaignadmin/:mode/:id',
     component: 'CampaignAdmin',
     meta: { requiresAuth: true, title: 'Campaign' }
   },
