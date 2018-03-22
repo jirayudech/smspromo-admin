@@ -56,30 +56,18 @@
 import {campaignsRef} from '../main';
 
 export default {
-  name: 'HelloWorld',
   addCampaign: true,
   data () {
-    if(this.$store.getters.getUser.userType == 'admin' && this.$store.getters.getUser !== null){
     return {
       headers: [
-        { text: 'Clients',sortable: true,align: 'center' },
-        { text: 'Campaign Picture',sortable: false,align: 'center' },
-        { text: 'Campaign Headers',sortable: true,align: 'center' },
-        { text: 'Edit',sortable: false,align: 'center' },
-        { text: 'Remove',sortable: false,align: 'center' },
-      ]
-    }
-    }
-    return {
-      headers: [
-        { text: 'Clients',sortable: true,align: 'center' },
+        { text: 'Brands',sortable: true,align: 'center' },
         { text: 'Campaign Picture',sortable: false,align: 'center' },
         { text: 'Campaign Headers',sortable: true,align: 'center' },
       ]
     }
   },
   firebase: function (){
-    return { campaigns: campaignsRef.orderByChild("campaign_agency").equalTo("company2")} 
+    return { campaigns: campaignsRef.orderByChild("campaign_company_id").equalTo("company2") }
   },
   computed: {
       isAuthenticated() {
@@ -95,9 +83,6 @@ export default {
       }
   },
   methods: {
-    submitCampaign(){
-      campainsRef.push({campaign_header: this.campaignHeader})  
-    },
     setPage() {
         this.$store.dispatch("setPage","Campaigns");
     }

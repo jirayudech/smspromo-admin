@@ -15,7 +15,7 @@
       </v-card-text>
          
       <v-card-text v-if="userIsAdmin" class="text-lg-right">
-        <v-btn color="primary"  id="addButton" to="/campaignaddedit">
+        <v-btn color="primary"  id="addButton" to="/campaignadd">
           <v-icon dark left>add_circle</v-icon> Add Campaign
         </v-btn>
       </v-card-text>
@@ -66,7 +66,7 @@ export default {
     if(this.$store.getters.getUser.userType == 'admin' && this.$store.getters.getUser !== null){
     return {
       headers: [
-        { text: 'Clients',sortable: true,align: 'center' },
+        { text: 'Brands',sortable: true,align: 'center' },
         { text: 'Campaign Picture',sortable: false,align: 'center' },
         { text: 'Campaign Headers',sortable: true,align: 'center' },
         { text: 'Edit',sortable: false,align: 'center' },
@@ -76,7 +76,7 @@ export default {
     }
     return {
       headers: [
-        { text: 'Clients',sortable: true,align: 'center' },
+        { text: 'Brands',sortable: true,align: 'center' },
         { text: 'Campaign Picture',sortable: false,align: 'center' },
         { text: 'Campaign Headers',sortable: true,align: 'center' },
       ]
@@ -104,7 +104,7 @@ export default {
   },
   methods: {
     submitCampaign(){
-      campainsRef.push({campaign_header: this.campaignHeader})  
+      campaignsRef.push({campaign_header: "test"})  
     },
     setPage() {
       this.$store.dispatch("setPage","Clients");
